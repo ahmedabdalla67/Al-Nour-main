@@ -10,7 +10,7 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  SingleChildScrollView(
+    return SingleChildScrollView(
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 16.0),
         child: Column(
@@ -21,31 +21,39 @@ class HomeScreen extends StatelessWidget {
             ),
             // top Bar
             const HomeTopBar(),
-      
+
             // date of day
             const SizedBox(
               height: 12,
             ),
-      
+
             //date and container continue reading
             const CustomContainer(),
-      
-            Row( 
+
+            Row(
               textDirection: TextDirection.rtl,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-              Text('الااختصارات', style: getApplicationTheme().textTheme.headlineLarge),
-              TextButton(onPressed: (){}, child: Text('عرض الكل', style: getApplicationTheme().textTheme.bodyLarge,),),
-            ],),
+                Text('الااختصارات',
+                    style: getApplicationTheme().textTheme.headlineLarge),
+                TextButton(
+                  onPressed: () {},
+                  child: Text(
+                    'عرض الكل',
+                    style: getApplicationTheme().textTheme.bodyLarge,
+                  ),
+                ),
+              ],
+            ),
             const SizedBox(height: 165, child: ListViewCards()),
-      
-            const SizedBox(height: 20,),
-                  const RandomAya(),
+
+            const SizedBox(
+              height: 20,
+            ),
+            const RandomAya(),
           ],
         ),
       ),
     );
   }
 }
-
-
