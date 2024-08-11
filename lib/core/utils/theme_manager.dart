@@ -6,7 +6,7 @@ ThemeData getApplicationTheme() {
   return ThemeData(
     brightness: Brightness.light,
     fontFamily: 'Cairo',
-    buttonTheme: ButtonThemeData(buttonColor: ManageColors.black),
+    buttonTheme: const ButtonThemeData(buttonColor: ManageColors.black),
     iconTheme: const IconThemeData(),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
       selectedIconTheme: IconThemeData(color: ManageColors.primary),
@@ -25,8 +25,9 @@ ThemeData getApplicationTheme() {
           color: ManageColors.gray,
           fontSize: FontSize.s14),
       headlineLarge: TextStyle(
+          
           fontFamily: FontConstants.fontFamily,
-          fontWeight: FontWeightManager.semiBold,
+          fontWeight: FontWeightManager.bold,
           color: ManageColors.black,
           fontSize: FontSize.s16),
       displayLarge: TextStyle(
