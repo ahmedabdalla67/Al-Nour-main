@@ -9,4 +9,5 @@ class ManageColors {
   static const Color gray = Colors.grey;
   static const Color hover = Color.fromARGB(255, 226, 174, 96);
   static const Color card1 = Color(0xffFFCD6A);
+  static const Color card2 = Color(0xff9C9C9C);
 }

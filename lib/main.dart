@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mesk/core/utils/theme_manager.dart';
 import 'package:mesk/features/main_screen.dart';
 
 void main() {
@@ -14,7 +15,7 @@ class Mesk extends StatelessWidget {
       home: MainScreen(),
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textTheme: TextTheme()
+        textTheme: getApplicationTheme().textTheme
       ),
     );
   }
