@@ -9,7 +9,7 @@ class RandomAya extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(15),
-      height: 160,
+      height: 170,
       width: double.infinity,
       decoration: BoxDecoration(
         color: ManageColors.card2.withOpacity(0.28),
