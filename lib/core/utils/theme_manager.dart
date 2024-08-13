@@ -29,7 +29,7 @@ ThemeData getApplicationTheme() {
           fontFamily: FontConstants.fontFamily,
           fontWeight: FontWeightManager.bold,
           color: ManageColors.black,
-          fontSize: FontSize.s16),
+          fontSize: FontSize.s20),
       displayLarge: TextStyle(
           fontFamily: FontConstants.fontFamily,
           fontWeight: FontWeightManager.bold,
