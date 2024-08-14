@@ -1,12 +1,10 @@
-import 'package:mesk/features/home/domain/entities/sub_entity/surah_entity.dart';
+import 'package:mesk/features/home/domain/entities/sub_entity/verse_entity.dart';
 
 class HomeEntity{
-  final Surah surahName;
-  final String pageNumber;
-  final Surah randomSurahName;
-  final Surah randomAyahName;
+  final String surahName;
+  final Verse ayah;
 
-  HomeEntity({required this.surahName, required this.pageNumber, required this.randomSurahName, required this.randomAyahName});
+  HomeEntity({required this.surahName, required this.ayah});
 }
 
 
