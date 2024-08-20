@@ -1,5 +1,5 @@
 class RandomVerseParams {
-  final String index;
+  final int index;
 
   RandomVerseParams({required this.index});
 }
