@@ -1,11 +1,6 @@
-import 'package:mesk/features/home/domain/entities/sub_entity/verse_entity.dart';
-
-class HomeEntity{
+class HomeEntity {
   final String surahName;
-  final Verse ayah;
+  final Map<String, String> verse;
 
-  HomeEntity({required this.surahName, required this.ayah});
+  HomeEntity({required this.surahName, required this.verse});
 }
-
-
-
