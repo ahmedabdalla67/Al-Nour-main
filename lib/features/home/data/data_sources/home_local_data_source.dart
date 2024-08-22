@@ -6,13 +6,14 @@ import 'package:mesk/features/home/data/models/surah_model.dart';
 
 class HomeLocalDataSource {
   final CacheHelper cache;
+  final String key = 'CachedHome';
 
   HomeLocalDataSource({required this.cache});
 
   cacheHome(SurahModel? surahToCache) {
     if (surahToCache != null) {
       cache.saveData(
-        key: 'CachedHome',
+        key: 'key',
         // value cannot stored as a model so i will convert model to json and from json i will encode to String and store it
         //and when i call method to show data i will convert again to model
         value: json.encode(surahToCache.toJson()),
@@ -21,6 +22,15 @@ class HomeLocalDataSource {
       throw CacheException(
           errorModel:
               'NO Internet Connection'); //علي الافتراض ان البيانات جاية من الانترنت Api
+    }
+  }
+
+  Future<SurahModel> getLastHomeData() {
+    final jsonData = cache.getStringData(key: key);
+    if (jsonData != null) {
+      return Future.value(SurahModel.fromJson(json.decode(jsonData)));
+    } else {
+      throw CacheException(errorModel: 'NO Internet Connection');
     }
   }
 }
