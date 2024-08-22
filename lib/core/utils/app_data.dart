@@ -19,4 +19,16 @@ class AppData {
       _surahs.add(SurahModel.fromJson(dataMap));
     }
   }
+
+  SurahModel getSurah(int index) {
+    if (index <= 1 || index > 114) {
+      throw RangeError('Surahs index must be between 1 and 114');
+    }
+    return _surahs[index - 1];
+  }
+
+  List<SurahModel> getAllSurahs() {
+    return List.unmodifiable(_surahs);
+  }
 }
+
