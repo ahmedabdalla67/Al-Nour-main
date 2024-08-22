@@ -20,7 +20,7 @@ class HomeLocalDataSource {
       );
     } else {
       throw CacheException(
-          errorModel:
+          errorMessage:
               'NO Internet Connection'); //علي الافتراض ان البيانات جاية من الانترنت Api
     }
   }
@@ -30,7 +30,7 @@ class HomeLocalDataSource {
     if (jsonData != null) {
       return Future.value(SurahModel.fromJson(json.decode(jsonData)));
     } else {
-      throw CacheException(errorModel: 'NO Internet Connection');
+      throw CacheException(errorMessage: 'NO Internet Connection');
     }
   }
 }

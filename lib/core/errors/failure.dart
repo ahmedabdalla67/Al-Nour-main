@@ -1,5 +1,5 @@
 class Failure {
-  final String errMessage;
+  final String errorMessage;
 
-  Failure({required this.errMessage});
+  Failure({required this.errorMessage});
 }

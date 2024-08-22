@@ -10,9 +10,9 @@ class ServerException implements Exception {
 
 //!CacheException
 class CacheException implements Exception {
-  final String errorModel;
+  final String errorMessage;
 
-  CacheException({required this.errorModel});
+  CacheException({required this.errorMessage});
 }
 
 class BadCertificateException extends ServerException {
