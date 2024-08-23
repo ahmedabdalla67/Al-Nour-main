@@ -8,6 +8,10 @@ import 'package:mesk/features/home/data/data_sources/home_remote_data_source.dar
 import 'package:mesk/features/home/domain/entities/home_entity.dart';
 import 'package:mesk/features/home/domain/repository/home_repo.dart';
 
+//! Repository is the bridge between domain layer and data layer
+//! 1- check the internet to choose which data i will call from cache or Api
+//! 2- after calling data i receive data as a model in data source and convert it to entity in domain layer
+
 class HomeRepoImpl extends HomeRepo {
   final NetworkInfo networkInfo;
   final HomeRemoteDataSource remoteDataSource;
