@@ -40,7 +40,7 @@ class CardComponent extends StatelessWidget {
               ),
               Text(
                 cardTitle,
-                style: getApplicationTheme().textTheme.headlineLarge,
+                style: getApplicationTheme().textTheme.titleMedium,
               ),
             ],
           ),

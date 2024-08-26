@@ -13,9 +13,13 @@ ThemeData getApplicationTheme() {
     ),
     textTheme: const TextTheme(
       bodySmall: TextStyle(
-          fontWeight: FontWeightManager.light, color: ManageColors.gray),
+          fontWeight: FontWeightManager.light,
+          color: ManageColors.gray,
+          fontSize: FontSize.s12),
       bodyLarge: TextStyle(
-          fontWeight: FontWeightManager.regular, color: ManageColors.black),
+          fontWeight: FontWeightManager.regular,
+          color: ManageColors.black,
+          fontSize: FontSize.s14),
       titleMedium: TextStyle(
           fontWeight: FontWeightManager.medium,
           color: ManageColors.black,
@@ -23,9 +27,8 @@ ThemeData getApplicationTheme() {
       headlineMedium: TextStyle(
           fontWeight: FontWeightManager.regular,
           color: ManageColors.gray,
-          fontSize: FontSize.s14),
+          fontSize: FontSize.s18),
       headlineLarge: TextStyle(
-          
           fontFamily: FontConstants.fontFamily,
           fontWeight: FontWeightManager.bold,
           color: ManageColors.black,
@@ -34,7 +37,7 @@ ThemeData getApplicationTheme() {
           fontFamily: FontConstants.fontFamily,
           fontWeight: FontWeightManager.bold,
           color: ManageColors.black,
-          fontSize: FontSize.s24),
+          fontSize: FontSize.s22),
     ),
   );
 }

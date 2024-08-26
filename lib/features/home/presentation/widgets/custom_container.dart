@@ -21,7 +21,7 @@ class CustomContainer extends StatelessWidget {
             ),
             Text(
               'الاثنين 16 محرم 1446',
-              style: getApplicationTheme().textTheme.headlineLarge,
+              style: getApplicationTheme().textTheme.titleMedium,
             ),
           ],
         ),
@@ -57,7 +57,7 @@ class CustomContainer extends StatelessWidget {
                       'القراءة من حيث توقفت',
                       style: getApplicationTheme()
                           .textTheme
-                          .headlineLarge!
+                          .headlineMedium!
                           .copyWith(color: ManageColors.white),
                     ),
                     Row(
