@@ -6,6 +6,7 @@ import 'package:mesk/features/main_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  setupServiceLocator();
   await getIT<CacheHelper>().init();
   runApp(const Mesk());
 }

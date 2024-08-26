@@ -10,17 +10,17 @@ import 'package:mesk/features/home/domain/useCases/home_data_use_case.dart';
 
 final getIT = GetIt.instance;
 void setupServiceLocator() {
+  getIT.registerSingleton<CacheHelper>(CacheHelper());
+
   getIT.registerSingleton<HomeDataUseCase>(
     HomeDataUseCase(
       homeRepo: HomeRepoImpl(
         remoteDataSource: HomeRemoteDataSource(appData: AppData()),
-        localDataSource: HomeLocalDataSource(cache: CacheHelper()),
+        localDataSource: HomeLocalDataSource(cache: getIT<CacheHelper>()),
         networkInfo: NetworkInfoImp(
           DataConnectionChecker(),
         ),
       ),
     ),
   );
-
-  getIT.registerSingleton<CacheHelper>(CacheHelper());
 }
