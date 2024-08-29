@@ -26,7 +26,7 @@ ThemeData getApplicationTheme() {
           fontSize: FontSize.s16),
       headlineMedium: TextStyle(
           fontWeight: FontWeightManager.regular,
-          color: ManageColors.gray,
+          //color: ManageColors.gray,
           fontSize: FontSize.s18),
       headlineLarge: TextStyle(
           fontFamily: FontConstants.fontFamily,

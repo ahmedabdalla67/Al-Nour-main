@@ -23,3 +23,14 @@ class FontSize {
   static const double s24 = 24.0;
   static const double s32 = 32.0;
 }
+
+// class ResponsiveFontSize{
+//   double getResponsiveFontSize({required double fontSize}){
+//     double ScaleFactor = 
+//   }
+
+//   double getScaleFactor(BuildContext context){
+//     double width = MediaQuery.sizeOf(context).width;
+//   }
+
+// }
