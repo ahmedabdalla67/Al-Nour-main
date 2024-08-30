@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mesk/core/utils/colors.dart';
 import 'package:mesk/core/utils/theme_manager.dart';
+import 'package:mesk/features/home/domain/entities/home_entity.dart';
+import 'package:mesk/features/home/presentation/cubit/home_cubit.dart';
 
 class RandomAya extends StatelessWidget {
-  const RandomAya({super.key});
+  const RandomAya({super.key, required this.randomSurah});
+  final HomeEntity randomSurah;
 
   @override
   Widget build(BuildContext context) {
@@ -18,74 +22,82 @@ class RandomAya extends StatelessWidget {
               BorderSide(width: 0.3, color: ManageColors.card2)),
           borderRadius: BorderRadius.circular(20),
         ),
-        child: Column(
-          children: [
-            Row(
-              textDirection: TextDirection.rtl,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        child: BlocConsumer<HomeCubit, HomeState>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            //int verseNumber = Random().nextInt(randomSurah.verse.length);
+            return Column(
               children: [
-                Text(
-                  'اية اليوم',
-                  style: getApplicationTheme()
-                      .textTheme
-                      .titleSmall!
-                      .copyWith(color: ManageColors.primary),
+                Row(
+                  textDirection: TextDirection.rtl,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'اية اليوم',
+                      style: getApplicationTheme()
+                          .textTheme
+                          .titleSmall!
+                          .copyWith(color: ManageColors.primary),
+                    ),
+                    Text(
+                      'سورة ${randomSurah.arabicName}',
+                      textDirection: TextDirection.rtl,
+                      style: getApplicationTheme()
+                          .textTheme
+                          .titleSmall!
+                          .copyWith(color: ManageColors.primary),
+                    ),
+                  ],
+                ),
+                const SizedBox(
+                  height: 10,
                 ),
                 Text(
-                  'سورة الفاتحة (3)',
+                  randomSurah.verse.values.last,
                   textDirection: TextDirection.rtl,
                   style: getApplicationTheme()
                       .textTheme
                       .titleSmall!
                       .copyWith(color: ManageColors.primary),
                 ),
-              ],
-            ),
-            const SizedBox(
-              height: 10,
-            ),
-            Text(
-              textDirection: TextDirection.rtl,
-              '﻿بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ',
-              style: getApplicationTheme()
-                  .textTheme
-                  .headlineMedium!
-                  .copyWith(color: ManageColors.black),
-            ),
-            const SizedBox(
-              height: 15,
-            ),
-            Container(
-              width: double.infinity,
-              height: 45,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                border: const Border.fromBorderSide(
-                  BorderSide(
-                    color: ManageColors.primary,
-                    width: 1.3,
-                  ),
+                const SizedBox(
+                  height: 15,
                 ),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                textDirection: TextDirection.rtl,
-                children: [
-                  Text(
-                    'مشاركة',
-                    style: getApplicationTheme()
-                        .textTheme
-                        .headlineLarge!
-                        .copyWith(color: ManageColors.primary),
+                Container(
+                  width: double.infinity,
+                  height: 45,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    border: const Border.fromBorderSide(
+                      BorderSide(
+                        color: ManageColors.primary,
+                        width: 1.3,
+                      ),
+                    ),
                   ),
-                  const SizedBox(
-                    width: 12,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    textDirection: TextDirection.rtl,
+                    children: [
+                      Text(
+                        'مشاركة',
+                        style: getApplicationTheme()
+                            .textTheme
+                            .headlineLarge!
+                            .copyWith(color: ManageColors.primary),
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      const Icon(Icons.share_outlined),
+                    ],
                   ),
-                  const Icon(Icons.share_outlined),
-                ],
-              ),
-            )
-          ],
+                )
+              ],
+            );
+          },
         ),
       ),
     );

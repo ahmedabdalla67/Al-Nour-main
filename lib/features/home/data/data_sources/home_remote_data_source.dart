@@ -8,8 +8,8 @@ class HomeRemoteDataSource {
   final AppData appData;
 
   HomeRemoteDataSource({required this.appData});
-  SurahModel getRandomSurah(RandomVerseParams params) {
-    final response = appData.getSurah(params.index) as Map<String, dynamic>;
-    return SurahModel.fromJson(response);
+  Future<SurahModel> getRandomSurah(RandomVerseParams params) async {
+    final response = await appData.getSurah(params.index);
+    return response;
   }
 }

@@ -27,9 +27,9 @@ class HomeRepoImpl extends HomeRepo {
       {required RandomVerseParams params}) async {
     if (await networkInfo.isConnected!) {
       try {
-        final remoteData = remoteDataSource.getRandomSurah(params);
+        final remoteData = await remoteDataSource.getRandomSurah(params);
         localDataSource.cacheHome(remoteData);
-        return left(remoteData);
+        return left(remoteData as HomeEntity);
       } on ServerException catch (e) {
         return right(Failure(errorMessage: e.errorModel.errMessage));
       }

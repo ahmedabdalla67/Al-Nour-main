@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:mesk/core/params/home_params.dart';
@@ -13,6 +15,8 @@ class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
   getRandomHomeSurah(int index) async {
+    emit(HomeLoading());
+    index = Random().nextInt(114);
     final randomSurah = await getIT<HomeDataUseCase>().call(
       params: RandomVerseParams(
         index: index,

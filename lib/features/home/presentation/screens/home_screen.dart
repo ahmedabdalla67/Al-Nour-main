@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mesk/core/shared_component/home_top_bar.dart';
+import 'package:mesk/features/home/presentation/cubit/home_cubit.dart';
 import 'package:mesk/features/home/presentation/widgets/custom_container.dart';
 import 'package:mesk/features/home/presentation/widgets/list_view_cards.dart';
 import 'package:mesk/features/home/presentation/widgets/random_aya.dart';
@@ -31,7 +33,25 @@ class HomeScreen extends StatelessWidget {
       const SizedBox(
         height: 20,
       ),
-      const RandomAya(),
+      BlocProvider(
+        create: (context) => HomeCubit()..getRandomHomeSurah(3),
+        child: BlocConsumer<HomeCubit, HomeState>(
+          listener: (context, state) {
+            // TODO: implement listener
+          },
+          builder: (context, state) {
+            return state is HomeGetSuccess
+                ? RandomAya(
+                    randomSurah: state.surah,
+                  )
+                : state is HomeGetFailure
+                    ? Text(state.errMessage)
+                    : const Center(
+                        child: CircularProgressIndicator(),
+                      );
+          },
+        ),
+      ),
       SectionTitle(title: 'مقاطع دينية', onPressed: () {}),
       SizedBox(
         height: 200,
