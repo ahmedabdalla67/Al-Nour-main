@@ -1,6 +1,6 @@
 class HomeEntity {
-  final String surahName;
+  final String arabicName;
   final Map<String, String> verse;
 
-  HomeEntity({required this.surahName, required this.verse});
+  HomeEntity({required this.arabicName, required this.verse});
 }
