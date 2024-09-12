@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:mesk/core/utils/app_data.dart';
 import 'package:mesk/core/utils/colors.dart';
 import 'package:mesk/core/utils/theme_manager.dart';
 import 'package:mesk/features/home/domain/entities/home_entity.dart';
@@ -24,10 +25,13 @@ class RandomAya extends StatelessWidget {
         ),
         child: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {
-            // TODO: implement listener
           },
           builder: (context, state) {
-            //int verseNumber = Random().nextInt(randomSurah.verse.length);
+            
+              String randomVerseText = AppData().getRandomVerse(randomSurah.verse);
+              String verseKey = randomSurah.verse.entries.firstWhere((entry) => entry.value == randomVerseText).key;
+              String verseNumber = verseKey.substring(6);
+              
             return Column(
               children: [
                 Row(
@@ -42,7 +46,7 @@ class RandomAya extends StatelessWidget {
                           .copyWith(color: ManageColors.primary),
                     ),
                     Text(
-                      'سورة ${randomSurah.arabicName}',
+                      'سورة ${randomSurah.arabicName + randomSurah.index.toString()}',
                       textDirection: TextDirection.rtl,
                       style: getApplicationTheme()
                           .textTheme
@@ -55,7 +59,7 @@ class RandomAya extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  randomSurah.verse.values.last,
+                  randomVerseText + verseNumber,
                   textDirection: TextDirection.rtl,
                   style: getApplicationTheme()
                       .textTheme

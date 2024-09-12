@@ -2,13 +2,13 @@ import 'package:mesk/features/home/data/models/sub_model/juz_model.dart';
 import 'package:mesk/features/home/domain/entities/home_entity.dart';
 
 class SurahModel extends HomeEntity {
-  final String index;
+  
 
   final int count;
   final List<Juz> juz;
 
   SurahModel({
-    required this.index,
+    required super.index,
     required this.count,
     required this.juz,
     required super.arabicName,
@@ -18,7 +18,7 @@ class SurahModel extends HomeEntity {
   // لتحويل JSON إلى كائن Dart
   factory SurahModel.fromJson(Map<String, dynamic> json) {
     return SurahModel(
-      index: json['index'],
+      index: int.parse(json['index']).toString(),
       arabicName: json['name'],
       verse: Map<String, String>.from(json['verse']),
       count: json['count'],

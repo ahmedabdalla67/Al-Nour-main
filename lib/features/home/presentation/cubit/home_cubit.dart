@@ -14,9 +14,11 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   HomeCubit() : super(HomeInitial());
 
-  getRandomHomeSurah(int index) async {
+  int index  = Random().nextInt(114);
+
+  getRandomHomeSurah() async {
     emit(HomeLoading());
-    index = Random().nextInt(114);
+    //index = Random().nextInt(114);
     final randomSurah = await getIT<HomeDataUseCase>().call(
       params: RandomVerseParams(
         index: index,
@@ -28,4 +30,7 @@ class HomeCubit extends Cubit<HomeState> {
       (failure) => emit(HomeGetFailure(errMessage: failure.errorMessage)),
     );
   }
+
+   
+
 }

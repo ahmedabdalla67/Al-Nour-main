@@ -34,7 +34,7 @@ class HomeScreen extends StatelessWidget {
         height: 20,
       ),
       BlocProvider(
-        create: (context) => HomeCubit()..getRandomHomeSurah(3),
+        create: (context) => HomeCubit()..getRandomHomeSurah(),
         child: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {
             // TODO: implement listener
