@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:mesk/core/utils/app_data.dart';
 import 'package:mesk/core/utils/colors.dart';
 import 'package:mesk/core/utils/theme_manager.dart';
-import 'package:mesk/features/home/domain/entities/home_entity.dart';
 import 'package:mesk/features/home/presentation/cubit/home_cubit.dart';
 
 class RandomAya extends StatelessWidget {
-  const RandomAya({super.key, required this.randomSurah});
-  final HomeEntity randomSurah;
+  const RandomAya({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +22,21 @@ class RandomAya extends StatelessWidget {
         ),
         child: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {
+            if(state is HomeGetFailure){
+                ScaffoldMessenger.of(context).showSnackBar(
+                  SnackBar(content: Text(state.errMessage)),
+                );
+              }
           },
           builder: (context, state) {
-            
-              String randomVerseText = AppData().getRandomVerse(randomSurah.verse);
-              String verseKey = randomSurah.verse.entries.firstWhere((entry) => entry.value == randomVerseText).key;
-              String verseNumber = verseKey.substring(6);
               
-            return Column(
+              if (state is HomeInitial){
+                context.read<HomeCubit>().loadOrGenerateRandomVerse();
+                return const Center(child: CircularProgressIndicator());
+              }
+              else if(state is HomeGetSuccess){
+                print(state.verseNumber);
+               return( Column(
               children: [
                 Row(
                   textDirection: TextDirection.rtl,
@@ -46,7 +50,7 @@ class RandomAya extends StatelessWidget {
                           .copyWith(color: ManageColors.primary),
                     ),
                     Text(
-                      'سورة ${randomSurah.arabicName + randomSurah.index.toString()}',
+                      'سورة ${state.surah.arabicName + state.surah.index}',
                       textDirection: TextDirection.rtl,
                       style: getApplicationTheme()
                           .textTheme
@@ -59,7 +63,7 @@ class RandomAya extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  randomVerseText + verseNumber,
+                  state.randomVerseText + state.verseNumber,
                   textDirection: TextDirection.rtl,
                   style: getApplicationTheme()
                       .textTheme
@@ -100,7 +104,13 @@ class RandomAya extends StatelessWidget {
                   ),
                 )
               ],
-            );
+            )
+               );
+                
+              }else{
+                return Text('An error occured');
+              }
+            
           },
         ),
       ),
