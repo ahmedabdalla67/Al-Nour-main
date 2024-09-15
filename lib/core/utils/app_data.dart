@@ -56,9 +56,9 @@ class AppData {
     if (index < 1 || index > 114) {
       throw RangeError('Surahs index must be between 1 and 114');
     }
-    // if (_surahs.isEmpty) {
-    //   throw StateError('Surahs have not been loaded successfully');
-    // }
+    if (_surahs.isEmpty) {
+      throw StateError('Surahs have not been loaded successfully');
+    }
     return _surahs[index - 1];
   }
 
