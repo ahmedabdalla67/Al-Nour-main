@@ -35,7 +35,6 @@ class RandomAya extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               }
               else if(state is HomeGetSuccess){
-                print(state.verseNumber);
                return( Column(
               children: [
                 Row(
@@ -50,7 +49,7 @@ class RandomAya extends StatelessWidget {
                           .copyWith(color: ManageColors.primary),
                     ),
                     Text(
-                      'سورة ${state.surah.arabicName + state.surah.index}',
+                      'سورة ${state.surah.arabicName}',
                       textDirection: TextDirection.rtl,
                       style: getApplicationTheme()
                           .textTheme
@@ -63,7 +62,7 @@ class RandomAya extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  state.randomVerseText + state.verseNumber,
+                  '${state.randomVerseText} (${(state.verseNumber)})',
                   textDirection: TextDirection.rtl,
                   style: getApplicationTheme()
                       .textTheme
