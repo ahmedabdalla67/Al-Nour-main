@@ -34,23 +34,8 @@ class HomeScreen extends StatelessWidget {
         height: 20,
       ),
       BlocProvider(
-        create: (context) => HomeCubit()..getRandomHomeSurah(),
-        child: BlocConsumer<HomeCubit, HomeState>(
-          listener: (context, state) {
-            // TODO: implement listener
-          },
-          builder: (context, state) {
-            return state is HomeGetSuccess
-                ? RandomAya(
-                    randomSurah: state.surah,
-                  )
-                : state is HomeGetFailure
-                    ? Text(state.errMessage)
-                    : const Center(
-                        child: CircularProgressIndicator(),
-                      );
-          },
-        ),
+        create: (context) => HomeCubit()..loadOrGenerateRandomVerse(),
+        child: RandomAya(),
       ),
       SectionTitle(title: 'مقاطع دينية', onPressed: () {}),
       SizedBox(
