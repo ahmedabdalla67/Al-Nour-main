@@ -11,6 +11,8 @@ import 'package:mesk/features/home/domain/useCases/home_data_use_case.dart';
 final getIT = GetIt.instance;
 void setupServiceLocator() {
   getIT.registerSingleton<CacheHelper>(CacheHelper());
+  
+  getIT.registerSingleton<AppData>(AppData());
 
   getIT.registerSingleton<HomeDataUseCase>(
     HomeDataUseCase(
