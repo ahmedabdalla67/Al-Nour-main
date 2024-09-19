@@ -35,7 +35,7 @@ class HomeScreen extends StatelessWidget {
       ),
       BlocProvider(
         create: (context) => HomeCubit()..loadOrGenerateRandomVerse(),
-        child: RandomAya(),
+        child: const RandomAya(),
       ),
       SectionTitle(title: 'مقاطع دينية', onPressed: () {}),
       SizedBox(
