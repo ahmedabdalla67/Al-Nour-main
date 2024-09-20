@@ -1,8 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mesk/core/utils/colors.dart';
 import 'package:mesk/core/utils/theme_manager.dart';
 import 'package:mesk/features/home/presentation/cubit/home_cubit.dart';
+import 'package:quran/quran.dart';
 
 class RandomAya extends StatelessWidget {
   const RandomAya({super.key});
@@ -49,7 +51,8 @@ class RandomAya extends StatelessWidget {
                           .copyWith(color: ManageColors.primary),
                     ),
                     Text(
-                      'سورة ${state.surah.arabicName}',
+                      // 'سورة ${state.surah.arabicName}',
+                      'سورة ${getSurahNameArabic(state.surah.index)} (${state.surah.index})',
                       textDirection: TextDirection.rtl,
                       style: getApplicationTheme()
                           .textTheme
@@ -62,7 +65,7 @@ class RandomAya extends StatelessWidget {
                   height: 10,
                 ),
                 Text(
-                  '${state.randomVerseText} (${(state.verseNumber)})',
+                  '${state.randomVerseText} (${state.verseNumber})',
                   textDirection: TextDirection.rtl,
                   style: getApplicationTheme()
                       .textTheme

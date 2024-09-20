@@ -5,7 +5,7 @@ import 'package:mesk/core/utils/font_manager.dart';
 ThemeData getApplicationTheme() {
   return ThemeData(
     brightness: Brightness.light,
-    fontFamily: 'Cairo',
+    fontFamily: 'AmiriQuran',
     buttonTheme: const ButtonThemeData(buttonColor: ManageColors.black),
     iconTheme: const IconThemeData(),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(

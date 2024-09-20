@@ -18,7 +18,7 @@ class SurahModel extends HomeEntity {
   // لتحويل JSON إلى كائن Dart
   factory SurahModel.fromJson(Map<String, dynamic> json) {
     return SurahModel(
-      index: int.parse(json['index']).toString(),
+      index: int.parse(json['index']),
       arabicName: json['name'],
       verse: Map<String, String>.from(json['verse']),
       count: json['count'],
