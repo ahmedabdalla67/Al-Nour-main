@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mesk/core/utils/colors.dart';
 import 'package:mesk/core/utils/theme_manager.dart';
@@ -46,7 +45,18 @@ class FehresOfQuran extends StatelessWidget {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                           Text(state.surahInfo[index].index.toString()),
+                           Container(
+                            height: 35,
+                            width: 35,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              border: Border.all(width: 2,),
+                              color: ManageColors.primary
+                            ),
+                            child: Padding(
+                              padding: const EdgeInsets.only(bottom: 8.0),
+                              child: Center(child: Text(state.surahInfo[index].index.toString(), style: const TextStyle(color: ManageColors.white),)),
+                            )),
                           Column(
                             children: [
                               Text(state.surahInfo[index].titleAr,
@@ -54,12 +64,17 @@ class FehresOfQuran extends StatelessWidget {
                                       .textTheme
                                       .headlineMedium!
                                       .copyWith(fontWeight: FontWeight.w500)),
-                              Text(
-                                state.surahInfo[index].type,
-                                style: getApplicationTheme()
-                                    .textTheme
-                                    .bodyMedium!
-                                    .copyWith(color: ManageColors.gray),
+                              Row(
+                                children: [
+                                  Text("${state.surahInfo[index].verseCount.toString()} آياتها - "),
+                                  Text(
+                                    state.surahInfo[index].type == 'Makkiyah'? 'مكية' : 'مدنية',
+                                    style: getApplicationTheme()
+                                        .textTheme
+                                        .bodyMedium!
+                                        .copyWith(color: ManageColors.gray),
+                                  ),
+                                ],
                               )
                             ],
                           )
