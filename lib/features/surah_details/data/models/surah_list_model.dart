@@ -26,7 +26,7 @@ class SurahListModel {
   final String title;
   final String titleAr;
   final String titleEn;
-  final String index;
+  final int index;
   final String pages;
   final String page;
   final int start;
@@ -42,7 +42,7 @@ class SurahListModel {
       title: json["title"],
       titleAr: json["titleAr"],
       titleEn: json["titleEn"],
-      index: json["index"],
+      index: json['index'] is int ? json['index'] : int.parse(json['index']),
       pages: json["pages"],
       page: json["page"],
       start: json["start"],

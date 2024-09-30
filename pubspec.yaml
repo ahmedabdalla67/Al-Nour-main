@@ -64,7 +64,7 @@ flutter:
   assets:
     - assets/images/
     - assets/quran_surahs/
-    - assets/surah_info
+    - assets/surah_info/
     - assets/arabic_names.json
     - assets/fonts/google_fonts/
   #   - images/a_dot_ham.jpeg
@@ -93,7 +93,7 @@ flutter:
         - asset: assets/fonts/noorFont/ArbFONTS-AGCRegular.ttf
     - family: AmiriQuran
       fonts:
-        - asset: assets/fonts/noorFont/AmiriQuran-Regular.ttf
+        - asset: assets/fonts/google_fonts/AmiriQuran-Regular.ttf
   #         weight: 700
   #
   # For details regarding fonts from package dependencies,

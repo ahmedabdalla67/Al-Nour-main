@@ -26,7 +26,7 @@ class HomeRepoImpl extends HomeRepo {
   Future<Either<HomeEntity, Failure>> getHomeData(
       {required RandomVerseParams params}) async {
     if (await networkInfo.isConnected!) {
-      try {
+      try { 
         final remoteData = await remoteDataSource.getRandomSurah(params);
         localDataSource.cacheHome(remoteData);
         return left(remoteData as HomeEntity);
