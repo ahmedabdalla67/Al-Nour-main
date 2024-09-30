@@ -64,6 +64,7 @@ flutter:
   assets:
     - assets/images/
     - assets/quran_surahs/
+    - assets/surah_info
     - assets/arabic_names.json
     - assets/fonts/google_fonts/
   #   - images/a_dot_ham.jpeg
