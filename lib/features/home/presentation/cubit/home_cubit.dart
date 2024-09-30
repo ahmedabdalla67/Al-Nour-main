@@ -8,7 +8,6 @@ import 'package:mesk/core/params/home_params.dart';
 import 'package:mesk/core/services/service_locator.dart';
 import 'package:mesk/core/utils/app_data.dart';
 import 'package:mesk/features/home/data/models/surah_model.dart';
-
 import 'package:mesk/features/home/domain/entities/home_entity.dart';
 import 'package:mesk/features/home/domain/useCases/home_data_use_case.dart';
 import 'package:meta/meta.dart';
