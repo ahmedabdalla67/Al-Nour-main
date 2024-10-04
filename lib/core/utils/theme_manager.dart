@@ -5,7 +5,7 @@ import 'package:mesk/core/utils/font_manager.dart';
 ThemeData getApplicationTheme() {
   return ThemeData(
     brightness: Brightness.light,
-    fontFamily: 'AmiriQuran',
+    fontFamily: 'Cairo',
     buttonTheme: const ButtonThemeData(buttonColor: ManageColors.black),
     iconTheme: const IconThemeData(),
     bottomNavigationBarTheme: const BottomNavigationBarThemeData(
@@ -13,28 +13,33 @@ ThemeData getApplicationTheme() {
     ),
     textTheme: const TextTheme(
       bodySmall: TextStyle(
+        fontFamily: FontConstants.appFontFamily,
           fontWeight: FontWeightManager.light,
           color: ManageColors.gray,
           fontSize: FontSize.s12),
       bodyLarge: TextStyle(
+        fontFamily: FontConstants.appFontFamily,
           fontWeight: FontWeightManager.regular,
           color: ManageColors.black,
           fontSize: FontSize.s14),
       titleMedium: TextStyle(
+        fontFamily: FontConstants.appFontFamily,
           fontWeight: FontWeightManager.medium,
           color: ManageColors.black,
-          fontSize: FontSize.s16),
+          fontSize: FontSize.s16,),
       headlineMedium: TextStyle(
+        fontFamily: FontConstants.appFontFamily,
           fontWeight: FontWeightManager.regular,
           //color: ManageColors.gray,
-          fontSize: FontSize.s18),
+          fontSize: FontSize.s18,
+          ),
       headlineLarge: TextStyle(
-          fontFamily: FontConstants.fontFamily,
+          fontFamily: FontConstants.appFontFamily,
           fontWeight: FontWeightManager.bold,
           color: ManageColors.black,
           fontSize: FontSize.s20),
       displayLarge: TextStyle(
-          fontFamily: FontConstants.fontFamily,
+          fontFamily: FontConstants.appFontFamily,
           fontWeight: FontWeightManager.bold,
           color: ManageColors.black,
           fontSize: FontSize.s22),

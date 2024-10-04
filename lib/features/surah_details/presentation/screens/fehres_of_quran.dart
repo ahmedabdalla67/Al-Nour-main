@@ -86,7 +86,7 @@ class FehresOfQuran extends StatelessWidget {
               },
             );
             }else{
-              return Text('There is an error');
+              return const Text('There is an error');
             }
           },
         ),

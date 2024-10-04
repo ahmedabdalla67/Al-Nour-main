@@ -2,6 +2,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mesk/core/utils/colors.dart';
+import 'package:mesk/core/utils/font_manager.dart';
 import 'package:mesk/core/utils/theme_manager.dart';
 import 'package:mesk/features/home/presentation/cubit/home_cubit.dart';
 import 'package:quran/quran.dart';
@@ -69,8 +70,8 @@ class RandomAya extends StatelessWidget {
                   textDirection: TextDirection.rtl,
                   style: getApplicationTheme()
                       .textTheme
-                      .titleSmall!
-                      .copyWith(color: ManageColors.primary),
+                      .headlineMedium!
+                      .copyWith(color: ManageColors.black.withOpacity(0.8), fontFamily: FontConstants.quranFontFamily, fontSize: FontSize.s20),
                 ),
                 const SizedBox(
                   height: 15,
