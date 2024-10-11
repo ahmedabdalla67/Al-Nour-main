@@ -107,7 +107,7 @@ class CustomContainer extends StatelessWidget {
                     const SizedBox(
                       height: 5,
                     ),
-                    const CustomButton()
+                    const CustomButton(color: ManageColors.white, text: 'متابعة',)
                   ],
                 )
               ],

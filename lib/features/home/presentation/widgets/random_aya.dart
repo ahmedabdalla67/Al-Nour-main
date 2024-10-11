@@ -33,7 +33,7 @@ class RandomAya extends StatelessWidget {
           },
           builder: (context, state) {
               
-              if (state is HomeInitial){
+              if (state is HomeLoading){
                 context.read<HomeCubit>().loadOrGenerateRandomVerse();
                 return const Center(child: CircularProgressIndicator());
               }
@@ -111,7 +111,7 @@ class RandomAya extends StatelessWidget {
                );
                 
               }else{
-                return Text('An error occured');
+                return const Text('An error occured');
               }
             
           },
