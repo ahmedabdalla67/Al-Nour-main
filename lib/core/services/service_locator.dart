@@ -3,6 +3,9 @@ import 'package:get_it/get_it.dart';
 import 'package:mesk/core/connectioin/network_info.dart';
 import 'package:mesk/core/database/cache/cache_helper.dart';
 import 'package:mesk/core/utils/app_data.dart';
+import 'package:mesk/features/azkari/data/data_sources/local_data_source.dart';
+import 'package:mesk/features/azkari/data/repository/azkar_repository_impl.dart';
+import 'package:mesk/features/azkari/domain/useCase/azkar_use_case.dart';
 import 'package:mesk/features/home/data/data_sources/home_local_data_source.dart';
 import 'package:mesk/features/home/data/data_sources/home_remote_data_source.dart';
 import 'package:mesk/features/home/data/repository/home_repo_impl.dart';
@@ -29,10 +32,19 @@ void setupServiceLocator() {
     ),
   );
 
-  getIT.registerLazySingleton<SurahListUseCase>(() => SurahListUseCase(
+  getIT.registerLazySingleton<SurahListUseCase>(
+    () => SurahListUseCase(
       surahListRepo: SurahListRepoImp(
-        localDataSourse: LocalDataSourse()
-      )
-      )
-      );
+        localDataSourse: LocalDataSourse(),
+      ),
+    ),
+  );
+
+  getIT.registerLazySingleton<AzkarUseCase>(
+    () => AzkarUseCase(
+      azkarRepo: AzkarRepoImpl(
+        localDataSource: LocalDataSource(),
+      ),
+    ),
+  );
 }

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:mesk/core/shared_component/custom_button.dart';
 import 'package:mesk/core/utils/colors.dart';
+import 'package:mesk/features/azkari/domain/Entities/sub_entities/category_group_entity.dart';
 
 class ZekrContainerWidget extends StatelessWidget {
-  const ZekrContainerWidget({super.key});
+  const ZekrContainerWidget({super.key, required this.categoryGroup, required this.index});
+  final CategoryGroupEntity categoryGroup;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
@@ -16,11 +19,11 @@ class ZekrContainerWidget extends StatelessWidget {
                     borderRadius: BorderRadius.circular(10),
                     border: Border.all(width: 0.5, color: ManageColors.gray.withOpacity(0.2)),
                   ),
-                  child: const Column(
+                  child:  Column(
                     children: [
-                      Text('Zekr'),
-                      SizedBox(height: 10,),
-                      Row(
+                      Text(categoryGroup.azkarContent[index].zekr),
+                      const SizedBox(height: 10,),
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                         textDirection: TextDirection.rtl,
                         children: [
