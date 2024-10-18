@@ -28,6 +28,7 @@ ThemeData getApplicationTheme() {
           color: ManageColors.black,
           fontSize: FontSize.s16,),
       headlineMedium: TextStyle(
+        height: 2,
         fontFamily: FontConstants.appFontFamily,
           fontWeight: FontWeightManager.regular,
           //color: ManageColors.gray,

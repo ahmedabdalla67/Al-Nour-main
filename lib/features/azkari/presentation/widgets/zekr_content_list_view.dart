@@ -14,7 +14,7 @@ class ZekrContentListView extends StatelessWidget {
         child: ZekrContainerWidget(categoryGroup: categoryGroup,index: index,),
       ),
       separatorBuilder:(context, index) => const SizedBox(height: 15,),
-      itemCount: 5,
+      itemCount: categoryGroup.azkarContent.length,
     );
   }
 }
