@@ -1,5 +1,4 @@
-import 'package:data_connection_checker_tv/data_connection_checker.dart';
-import 'package:get_it/get_it.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';import 'package:get_it/get_it.dart';
 import 'package:mesk/core/connectioin/network_info.dart';
 import 'package:mesk/core/database/cache/cache_helper.dart';
 import 'package:mesk/core/utils/app_data.dart';
@@ -26,7 +25,7 @@ void setupServiceLocator() {
         remoteDataSource: HomeRemoteDataSource(appData: AppData()),
         localDataSource: HomeLocalDataSource(cache: getIT<CacheHelper>()),
         networkInfo: NetworkInfoImp(
-          DataConnectionChecker(),
+          InternetConnection(),
         ),
       ),
     ),
