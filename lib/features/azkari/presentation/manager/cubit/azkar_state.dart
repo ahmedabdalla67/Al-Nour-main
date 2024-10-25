@@ -15,3 +15,5 @@ final class AzkarFailure extends AzkarState {
 
   AzkarFailure({required this.errMessage});
 }
+
+final class IncrementCounterSuccess extends AzkarState {}

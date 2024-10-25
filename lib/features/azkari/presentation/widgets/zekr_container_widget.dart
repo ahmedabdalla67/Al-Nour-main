@@ -4,13 +4,21 @@ import 'package:mesk/core/utils/colors.dart';
 import 'package:mesk/core/utils/theme_manager.dart';
 import 'package:mesk/features/azkari/domain/Entities/sub_entities/category_group_entity.dart';
 
-class ZekrContainerWidget extends StatelessWidget {
+class ZekrContainerWidget extends StatefulWidget {
   const ZekrContainerWidget({super.key, required this.categoryGroup, required this.index});
   final CategoryGroupEntity categoryGroup;
   final int index;
 
   @override
+  State<ZekrContainerWidget> createState() => _ZekrContainerWidgetState();
+}
+
+class _ZekrContainerWidgetState extends State<ZekrContainerWidget> {
+  int count = 0;
+
+  @override
   Widget build(BuildContext context) {
+    
     return FittedBox(
       child: Container(
         padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
@@ -22,17 +30,27 @@ class ZekrContainerWidget extends StatelessWidget {
                   ),
                   child:  Column(
                     children: [
-                      Text(categoryGroup.azkarContent[index].zekr, style: getApplicationTheme().textTheme.headlineMedium, textDirection: TextDirection.rtl,),
+                      Text(widget.categoryGroup.azkarContent[widget.index].zekr, style: getApplicationTheme().textTheme.headlineMedium, textDirection: TextDirection.rtl,),
                       const SizedBox(height: 20,),
-                      const Row(
+                       Row(
                         mainAxisAlignment:MainAxisAlignment.spaceEvenly  ,
                         textDirection: TextDirection.rtl,
                         children: [
                          CustomButton(
                           color: ManageColors.primary, 
-                          text: 'تكرار 1/1',
-                          textColor: ManageColors.white, width: 150,),
-                          CustomButton(color: Colors.transparent, text: 'مشاركة',width: 150,),
+                          text: 'تكرار  ${widget.categoryGroup.azkarContent[widget.index].count!= '' ? widget.categoryGroup.azkarContent[widget.index].count : '1'}/$count',
+                          textColor: ManageColors.white, width: 150,
+                          onPressed: (){
+                            // print('count is $count');
+                            if(count < int.parse(widget.categoryGroup.azkarContent[widget.index].count != '' ? widget.categoryGroup.azkarContent[widget.index].count!  : '1')){
+                              setState(() {
+                                count++;
+                              });
+                              //print('count is $count');
+                            }
+                          },
+                          ),
+                          const CustomButton(color: Colors.transparent, text: 'مشاركة',width: 150,),
                         ],
                       )
                     ],
@@ -41,3 +59,5 @@ class ZekrContainerWidget extends StatelessWidget {
     );
   }
 }
+
+

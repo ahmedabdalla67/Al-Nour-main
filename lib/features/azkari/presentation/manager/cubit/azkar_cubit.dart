@@ -17,4 +17,10 @@ class AzkarCubit extends Cubit<AzkarState> {
       (failure)=> emit(AzkarFailure(errMessage: failure.errorMessage)), 
       (azkar)=> emit(AzkarSuccess(azkarList: azkar)));
   }
+
+  incrementCounter (){
+    int count = 0;
+    count ++;
+    emit(IncrementCounterSuccess());
+  }
 }
