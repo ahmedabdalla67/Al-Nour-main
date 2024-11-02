@@ -3,6 +3,7 @@ import 'package:go_router/go_router.dart';
 import 'package:mesk/features/azkari/domain/Entities/sub_entities/category_group_entity.dart';
 import 'package:mesk/features/azkari/presentation/screens/azkar_screen.dart';
 import 'package:mesk/features/azkari/presentation/screens/zekr_details_screen.dart';
+import 'package:mesk/features/azkari/presentation/widgets/search_content_widget.dart';
 import 'package:mesk/features/surah_details/presentation/screens/fehres_of_quran.dart';
 import 'package:mesk/features/main_screen.dart';
 import 'package:responsive_framework/responsive_framework.dart';
@@ -24,11 +25,14 @@ final GoRouter router = GoRouter(
       ),
     ),
     GoRoute(path: '/azkar',
-      pageBuilder: (context, state) => MaterialPage(child:  wrapWithResponsiveScaling(
-        context, 
-        const AzkarScreen(),
+      pageBuilder: (context, state) {
+        //final categoryGroup = state.extra as CategoryGroupEntity;
+        return(
+          MaterialPage(child:  wrapWithResponsiveScaling(
+          context, 
+           const AzkarScreen(),
         ),
-      ),
+      ));}
     ),
     GoRoute(path: '/zekrDetails',
       pageBuilder: (context, state) {
@@ -39,7 +43,17 @@ final GoRouter router = GoRouter(
           ),
         );
       },
-    ) 
+    ),
+
+    GoRoute(
+      path: '/zekrContentSearch',
+      pageBuilder: (context, state)  {
+        final categoryGroup = state.extra as CategoryGroupEntity;
+        return
+        (
+          MaterialPage(
+            child: wrapWithResponsiveScaling(context, SearchContentWidget(categoryGroup: categoryGroup,))));},
+      ) 
     
   ]
   );

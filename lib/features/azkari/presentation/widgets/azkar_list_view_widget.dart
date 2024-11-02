@@ -19,51 +19,57 @@ class AzkarListView extends StatelessWidget {
           if(state is AzkarLoading){
             return const Center(child: CircularProgressIndicator(),);
           }
-          else if(state is AzkarSuccess){
+          else if(state is AzkarSuccess || state is OpenSearchField){
+            final azkarList = state is AzkarSuccess ? state.azkarList : (state as OpenSearchField).query;
             return ListView.separated(
             separatorBuilder: (context, index) => const SizedBox(
               height: 15,
             ),
-            itemCount: state.azkarList.length,
+            itemCount: azkarList.length,
             itemBuilder: (context, index) {
-              final categoryGroup = state.azkarList[index];
-              return Container(
-                padding: const EdgeInsets.only(right: 10),
-                width: MediaQuery.of(context).size.width,
-                height: 60,
-                decoration: BoxDecoration(
-                  color: ManageColors.white,
-                  borderRadius: BorderRadius.circular(10),
-                  border: Border.all(width: 0.5, color: ManageColors.gray.withOpacity(0.2)),
-                ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  textDirection: TextDirection.rtl,
-                  children: [
-                    Flexible(
-                      child: Text(
-                        textDirection: TextDirection.rtl,
-                        textAlign: TextAlign.right,
-                        state.azkarList[index].category,
-                        style: getApplicationTheme()
-                            .textTheme
-                            .headlineMedium!
-                            .copyWith(
-                                fontWeight: FontWeight.w600,
-                                fontSize: FontSize.s16),
-                      ),
+              final categoryGroup = azkarList[index];
+              return Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.only(right: 10),
+                    width: MediaQuery.of(context).size.width,
+                    height: 60,
+                    decoration: BoxDecoration(
+                      color: ManageColors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      border: Border.all(width: 0.5, color: ManageColors.gray.withOpacity(0.2)),
                     ),
-                    IconButton(
-                        onPressed: () {
-                          customNavigate(context, '/zekrDetails',extra: categoryGroup);
-                        },
-                        icon: const Icon(Icons.arrow_back_ios_new_rounded)),
-                  ],
-                ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      textDirection: TextDirection.rtl,
+                      children: [
+                        Flexible(
+                          child: Text(
+                            textDirection: TextDirection.rtl,
+                            textAlign: TextAlign.right,
+                            azkarList[index].category,
+                            style: getApplicationTheme()
+                                .textTheme
+                                .headlineMedium!
+                                .copyWith(
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: FontSize.s16),
+                          ),
+                        ),
+                        IconButton(
+                            onPressed: () {
+                              customNavigate(context, '/zekrDetails',extra: categoryGroup);
+                            },
+                            icon: const Icon(Icons.arrow_back_ios_new_rounded)),
+                      ],
+                    ),
+                  ),
+                ],
               );
             },
           );
-          }else{
+          } 
+          else{
             return const Text('There is an error');
           }
         },

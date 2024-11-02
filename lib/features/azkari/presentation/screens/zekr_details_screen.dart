@@ -7,12 +7,14 @@ class ZekrDetailsScreen extends StatelessWidget {
   const ZekrDetailsScreen({super.key, required this.categoryGroup});
   final CategoryGroupEntity categoryGroup;
 
+
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
         centerTitle: true,
         title: Text(categoryGroup.category, style: getApplicationTheme().textTheme.headlineLarge,),
+        
       ),
       body: ZekrContentListView(categoryGroup: categoryGroup,),
     );
