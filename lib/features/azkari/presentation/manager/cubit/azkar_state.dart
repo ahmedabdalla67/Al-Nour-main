@@ -7,8 +7,9 @@ final class AzkarInitial extends AzkarState {}
 final class AzkarLoading extends AzkarState {}
 final class AzkarSuccess extends AzkarState {
   final List<CategoryGroupEntity> azkarList;
+  final bool isSearchOpen;
 
-  AzkarSuccess({required this.azkarList});
+  AzkarSuccess( {required this.azkarList, this.isSearchOpen = false,});
 }
 final class AzkarFailure extends AzkarState {
   final String errMessage;
@@ -16,4 +17,11 @@ final class AzkarFailure extends AzkarState {
   AzkarFailure({required this.errMessage});
 }
 
-final class IncrementCounterSuccess extends AzkarState {}
+
+final class OpenSearchField extends AzkarState {
+  final List<CategoryGroupEntity> query;
+
+  OpenSearchField({required this.query});
+}
+
+
