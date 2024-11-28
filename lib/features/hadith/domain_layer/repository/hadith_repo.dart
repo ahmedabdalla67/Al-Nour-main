@@ -3,7 +3,8 @@ import 'package:mesk/core/errors/failure.dart';
 import 'package:mesk/features/hadith/domain_layer/entities/hadith_entity.dart';
 
 abstract class HadithRepo {
-  Future<Either<Failure, List<HadithEntity>>> getGitHubHadithFiles();
-  Future<Either<Failure, HadithEntity>> downloadFile(String fileName);
-  Future<Either<Failure, HadithEntity>> getFileContent(String fileName);
+  Future<Either<Failure, List<HadithEntity>>> getHadiths(String fileName);
+  Future<Either<Failure, void>> cacheHadith(String fileName, String content);
+  Future<Either<Failure, void>> removeHadith(String fileName);
+  Future<Either<Failure, bool>> isHadithDownloaded(String fileName);
 }
