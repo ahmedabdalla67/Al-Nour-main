@@ -1,51 +1,47 @@
 import 'dart:convert';
+import 'dart:developer';
 
-import 'package:mesk/features/hadith/data_layer/models/hadith_model.dart';
+import 'package:mesk/features/hadith/data_layer/models/hadith_content_model.dart';
 import 'package:http/http.dart' as http;
 
 abstract class RemoteDataSource {
-  Future<List<HadithModel>> getHadithFiles();
-  Future<String> downloadFile(String fileName);
+  Future<List<HadithModel>> getHadithFiles(String fileName);
 }
 
 class RemoteDataSourceImpl extends RemoteDataSource {
-  final String baseUrl;
-
-  RemoteDataSourceImpl({required this.baseUrl});
+  final String baseUrl =
+      'https://raw.githubusercontent.com/mohamedhashim73/Quran-App-Data/refs/heads/main/Hadith%20Books%20Json/';
 
   @override
-  Future<String> downloadFile(String fileName) async {
+  Future<List<HadithModel>> getHadithFiles(fileName) async {
     try {
-      final fileUrl = '$baseUrl/$fileName';
-      final response = await http.get(Uri.parse(fileUrl));
-
+      final response = await http.get(Uri.parse(fileName));
       if (response.statusCode == 200) {
-        return response.body;
+        final List<dynamic> data = json.decode(response.body);
+
+        return data.map((json) => HadithModel.fromJson(json)).toList();
       } else {
-        throw {'Error in download file'};
+        throw {'error in get hadith file content'};
       }
     } catch (e) {
-      throw {'Error in Catch in download file'};
+      log('Error in Get Hadith File Content: $e');
+      return [];
     }
   }
 
-  @override
-  Future<List<HadithModel>> getHadithFiles() async {
-    try {
-      final fileUrl = baseUrl;
-      final response = await http.get(
-        Uri.parse(fileUrl),
-        headers: {'Accept': 'application/json'},
-      );
+  // @override
+  // Future<String> downloadFile(String fileName) async {
+  //   try {
+  //     final fileUrl = '$baseUrl/$fileName';
+  //     final response = await http.get(Uri.parse(fileUrl));
 
-      if (response.statusCode == 200) {
-        final List<dynamic> jsonList = json.decode(response.body);
-        return jsonList.map((json) => HadithModel.fromJson(json)).toList();
-      } else {
-        throw {'Error in Get Hadith Files'};
-      }
-    } catch (e) {
-      throw {'Error in Catch in Get Hadith Files'};
-    }
-  }
+  //     if (response.statusCode == 200) {
+  //       return response.body;
+  //     } else {
+  //       throw {'Error in download file'};
+  //     }
+  //   } catch (e) {
+  //     throw {'Error in Catch in download file'};
+  //   }
+  // }
 }
