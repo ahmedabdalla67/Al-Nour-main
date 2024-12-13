@@ -6,3 +6,9 @@ abstract class UseCase<Type, Param> {
 }
 
 class NoParam {}
+
+// use case with two parameter
+abstract class TwoParamUseCase<Type, FirstParam, SecondParam> {
+  Future<Either<Failure, Type>> call(
+      {required FirstParam firstParam, required SecondParam secondParam});
+}
