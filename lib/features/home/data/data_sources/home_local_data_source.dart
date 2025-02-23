@@ -12,6 +12,7 @@ class HomeLocalDataSource {
 
   cacheHome(SurahModel? surahToCache) {
     if (surahToCache != null) {
+      print('sourah t;o cache $surahToCache');
       cache.saveData(
         key: 'key',
         // value cannot stored as a model so i will convert model to json and from json i will encode to String and store it
@@ -27,9 +28,11 @@ class HomeLocalDataSource {
 
   Future<SurahModel> getLastHomeData() {
     final jsonData = cache.getStringData(key: key);
+    print('jsonData-----------> $jsonData');
     if (jsonData != null) {
       return Future.value(SurahModel.fromJson(json.decode(jsonData)));
     } else {
+      print('cach exception-----------');
       throw CacheException(errorMessage: 'NO Internet Connection');
     }
   }

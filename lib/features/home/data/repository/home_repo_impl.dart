@@ -25,12 +25,15 @@ class HomeRepoImpl extends HomeRepo {
   @override
   Future<Either<HomeEntity, Failure>> getHomeData(
       {required RandomVerseParams params}) async {
-    if (await networkInfo.isConnected!) {
-      try { 
+    bool isConnected = await networkInfo.isConnected();
+    print('networkInfo $isConnected');
+    if (!isConnected) {
+      try {
         final remoteData = await remoteDataSource.getRandomSurah(params);
         localDataSource.cacheHome(remoteData);
         return left(remoteData as HomeEntity);
       } on ServerException catch (e) {
+        print('errorMessage $e');
         return right(Failure(errorMessage: e.errorModel.errMessage));
       }
     } else {
