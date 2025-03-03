@@ -27,7 +27,7 @@ class HomeRepoImpl extends HomeRepo {
       {required RandomVerseParams params}) async {
     bool isConnected = await networkInfo.isConnected();
     print('networkInfo $isConnected');
-    if (!isConnected) {
+    if (isConnected) {
       try {
         final remoteData = await remoteDataSource.getRandomSurah(params);
         localDataSource.cacheHome(remoteData);

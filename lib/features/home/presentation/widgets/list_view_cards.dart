@@ -17,7 +17,7 @@ class ListViewCards extends StatelessWidget {
         CardComponent(cardColor: ManageColors.card2.withOpacity(0.65), cardImagePath: 'assets/images/praying.png', cardTitle: 'الأدعية والأذكار', onTap: (){customNavigate(context, '/azkar');}),
         CardComponent(cardColor: ManageColors.card1.withOpacity(0.65), cardImagePath: 'assets/images/listening.png', cardTitle: 'القراء', onTap: (){}),
         CardComponent(cardColor: ManageColors.card2.withOpacity(0.65), cardImagePath: 'assets/images/al_rouqia.png', cardTitle: 'الرقية الشرعية', onTap: (){}),
-        CardComponent(cardColor: ManageColors.card1.withOpacity(0.65), cardImagePath: 'assets/images/islamic_library.png', cardTitle: 'كتب اسلامية', onTap: (){}),
+        CardComponent(cardColor: ManageColors.card1.withOpacity(0.65), cardImagePath: 'assets/images/islamic_library.png', cardTitle: 'كتب اسلامية', onTap: (){customNavigate(context, '/hadith');}),
         CardComponent(cardColor: ManageColors.card2.withOpacity(0.65), cardImagePath: 'assets/images/rasory.png', cardTitle: 'المسبحة', onTap: (){}),
         CardComponent(cardColor: ManageColors.card1.withOpacity(0.65), cardImagePath: 'assets/images/qibla.png', cardTitle: 'اتجاه القبلة', onTap: (){}),
         CardComponent(cardColor: ManageColors.card2.withOpacity(0.65), padding: 0, cardImagePath: 'assets/images/al_salaah.png', cardTitle: 'مواقيت الصلاة', onTap: (){}),
