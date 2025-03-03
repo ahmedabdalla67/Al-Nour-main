@@ -10,7 +10,7 @@ import 'package:meta/meta.dart';
 part 'hadith_state.dart';
 
 class HadithCubitCubit extends Cubit<HadithCubitState> {
-  final List<String> hadithFiles = [
+  final List<String> hadithFilesName = [
     'abi_daud.json',
     'ahmed.json',
     'bukhari.json',
@@ -32,7 +32,7 @@ class HadithCubitCubit extends Cubit<HadithCubitState> {
         .fold((failure) => HadithCubitFailure(errMessage: failure.errorMessage),
             (hadiths) async {
       final downloadStatus = <String, bool>{};
-      for (var file in hadithFiles) {
+      for (var file in hadithFilesName) {
         // final statusResult = await checkHadithStatus(file);
         final statusResult = await getIT<CheckHadithStatus>().call(file);
         statusResult.fold((failure) => downloadStatus[file] = false,
