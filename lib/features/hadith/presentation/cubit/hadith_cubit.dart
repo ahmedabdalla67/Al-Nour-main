@@ -10,17 +10,17 @@ import 'package:meta/meta.dart';
 part 'hadith_state.dart';
 
 class HadithCubitCubit extends Cubit<HadithCubitState> {
-  final List<String> hadithFilesName = [
-    'abi_daud.json',
-    'ahmed.json',
-    'bukhari.json',
-    'darimi.json',
-    'ibn_maja.json',
-    'malik.json',
-    'muslim.json',
-    'nasai.json',
-    'trmizi.json'
-  ];
+  final Map<String, String> hadithFilesName = {
+    'abi_daud.json': 'سنن أبي داود',
+    'ahmed.json': 'الإمام أحمد',
+    'bukhari.json': "صحيح البخاري",
+    'darimi.json': "سنن الدارمي",
+    'ibn_maja.json': "سنن ابن ماجه",
+    'malik.json': "الإمام مالك",
+    'muslim.json': "صحيح مسلم",
+    'nasai.json': "سنن النسائي الكبري",
+    'trmizi.json': "جامع الترمذي"
+  };
 
   HadithCubitCubit() : super(HadithCubitInitial());
 
@@ -32,7 +32,7 @@ class HadithCubitCubit extends Cubit<HadithCubitState> {
         .fold((failure) => HadithCubitFailure(errMessage: failure.errorMessage),
             (hadiths) async {
       final downloadStatus = <String, bool>{};
-      for (var file in hadithFilesName) {
+      for (var file in hadithFilesName.keys) {
         // final statusResult = await checkHadithStatus(file);
         final statusResult = await getIT<CheckHadithStatus>().call(file);
         statusResult.fold((failure) => downloadStatus[file] = false,
