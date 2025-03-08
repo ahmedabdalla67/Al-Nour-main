@@ -42,13 +42,14 @@ class CustomContainer extends StatelessWidget {
           ),
           SizedBox(
             height: 150,
+            width: MediaQuery.sizeOf(context).width - 10,
             child: Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Image.asset(
                   'assets/images/quran_logo.png',
-                  width: 120,
+                  width: MediaQuery.sizeOf(context).width / 3,
                 ),
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -58,7 +59,7 @@ class CustomContainer extends StatelessWidget {
                       style: getApplicationTheme()
                           .textTheme
                           .headlineMedium!
-                          .copyWith(color: ManageColors.white),
+                          .copyWith(color: ManageColors.white, fontSize: 16),
                     ),
                     Row(
                       textDirection: TextDirection.rtl,
@@ -107,7 +108,10 @@ class CustomContainer extends StatelessWidget {
                     const SizedBox(
                       height: 5,
                     ),
-                    const CustomButton(color: ManageColors.white, text: 'متابعة',)
+                    const CustomButton(
+                      color: ManageColors.white,
+                      text: 'متابعة',
+                    )
                   ],
                 )
               ],

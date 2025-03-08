@@ -18,9 +18,13 @@ class HadithBooks extends StatelessWidget {
             appBar: AppBar(),
             body: SizedBox(
               child: ListView.builder(
-                itemBuilder: (context, index) =>  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
-                    child: HadithBookWidget(fileName: hadithFiles[index])),
+                itemBuilder: (context, index) => Padding(
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 5),
+                    child: HadithBookWidget(
+                      fileName: hadithFiles.values.toList(),
+                      index: index,
+                    )),
                 itemCount: hadithFiles.length,
               ),
             ),
