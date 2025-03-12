@@ -14,10 +14,13 @@ class RemoteDataSourceImpl extends RemoteDataSource {
 
   @override
   Future<List<HadithModel>> getHadithFiles(fileName) async {
+    print('fileName:  $fileName');
     try {
-      final response = await http.get(Uri.parse(fileName));
+      final response = await http.get(Uri.parse('${baseUrl}abi_daud.json'));
+      print('Response ${response.statusCode}');
       if (response.statusCode == 200) {
         final List<dynamic> data = json.decode(response.body);
+        print('Data $data');
 
         return data.map((json) => HadithModel.fromJson(json)).toList();
       } else {

@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:mesk/core/utils/colors.dart';
+import 'package:mesk/core/utils/theme_manager.dart';
+import 'package:mesk/features/hadith/presentation/cubit/hadith_cubit.dart';
 
 class HadithBookWidget extends StatelessWidget {
   const HadithBookWidget(
@@ -10,7 +13,7 @@ class HadithBookWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 10),
+      padding: const EdgeInsets.only(left: 5, right: 10),
       width: MediaQuery.of(context).size.width,
       height: 60,
       decoration: BoxDecoration(
@@ -28,15 +31,29 @@ class HadithBookWidget extends StatelessWidget {
             width: 10,
           ),
           Column(
+            textDirection: TextDirection.rtl,
             mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(fileName[index]),
               // SizedBox(height: 3,),
-              const Text('no hadith')
+              Text(
+                "‍٤‍‍٤حديث",
+                textDirection: TextDirection.rtl,
+                style: getApplicationTheme().textTheme.bodySmall,
+              )
             ],
           ),
           const Spacer(),
-          const Icon(Icons.file_download_outlined)
+          BlocBuilder<HadithCubitCubit, HadithCubitState>(
+            builder: (context, state) {
+              return IconButton(
+                  onPressed: () {
+                    context.read<HadithCubitCubit>().loadHadiths(fileName[index]);
+                  },
+                  icon: state is HadithCubitSuccess ? const Icon(Icons.download_done_outlined) : state is HadithCubitLoading ? const CircularProgressIndicator(color: ManageColors.primary,) : const Icon(Icons.file_download_outlined));
+            },
+          )
         ],
       ),
     );
