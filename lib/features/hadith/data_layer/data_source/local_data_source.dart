@@ -6,7 +6,7 @@ import 'package:mesk/features/hadith/data_layer/models/hadith_content_model.dart
 
 abstract class HadithLocalDataSource {
   Future<List<HadithModel>> getHadiths(String fileName);
-  Future<void> cacheHadith(String fileName, String content);
+  Future<void> cacheHadith(String fileName, List<HadithModel> content);
   Future<void> removeHadith(String fileName);
   Future<bool> isHadithDownloaded(String fileName);
 }
@@ -17,8 +17,10 @@ class HadithLocalDataSourceImpl extends HadithLocalDataSource {
   HadithLocalDataSourceImpl({required this.cacheHelper});
 
   @override
-  Future<void> cacheHadith(String fileName, String content) async {
-    await cacheHelper.saveData(key: fileName, value: content);
+  Future<void> cacheHadith(String fileName, List<HadithModel> content) async {
+    final jsonList = content.map((hadith) => hadith.toJson()).toList();
+    final jsonString = json.encode(jsonList);
+    await cacheHelper.saveData(key: fileName, value: jsonString);
   }
 
   @override

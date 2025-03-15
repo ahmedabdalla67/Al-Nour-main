@@ -4,20 +4,22 @@ class HadithModel {
   final String hadithText;
   final String? description;
   final int number;
-  final String searchTerm;
+  // final String searchTerm;
 
-  HadithModel(
-      {required this.hadithText,
-      required this.description,
-      required this.number,
-      required this.searchTerm});
+  HadithModel({
+    required this.hadithText,
+    required this.description,
+    required this.number,
+    // required this.searchTerm
+  });
 
   factory HadithModel.fromJson(Map<String, dynamic> json) {
     return HadithModel(
-        hadithText: json['hadith'],
-        description: json['description'] ?? '',
-        number: json['number'],
-        searchTerm: json['searchTerm']);
+      hadithText: json['hadith'],
+      description: json['description'] ?? '',
+      number: json['number'],
+      // searchTerm: json['searchTerm']
+    );
   }
 
   Map<String, dynamic> toJson() {
@@ -25,7 +27,7 @@ class HadithModel {
       'hadith': hadithText,
       'description': description ?? '',
       'number': number,
-      'seachTerm': searchTerm,
+      // 'seachTerm': searchTerm,
     };
   }
 

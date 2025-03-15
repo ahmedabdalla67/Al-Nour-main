@@ -15,9 +15,11 @@ class HadithRepoImpl extends HadithRepo {
 
   @override
   Future<Either<Failure, void>> cacheHadith(
-      String fileName, String content) async {
+      String fileName, List<HadithEntity> content) async {
+    print('HadithRepoImplCaacheHadith');
     try {
-      await localDataSource.cacheHadith(fileName, content);
+      final contentModel = content.map((entity) => entity.toModel()).toList();
+      await localDataSource.cacheHadith(fileName, contentModel);
       return const Right(null);
     } on CacheException catch (e) {
       return Left(Failure(errorMessage: e.errorMessage));
